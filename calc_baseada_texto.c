@@ -1,0 +1,107 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void menu(){ // Exibe o menu de opções para o usuário
+    printf("\n");
+    printf("=========================\n");
+    printf("   CALCULADORA SIMPLES   \n");
+    printf("=========================\n");
+    printf("[1] Adicao\n");
+    printf("[2] Subtracao\n");
+    printf("[3] Multiplicacao\n");
+    printf("[4] Divisao\n");
+    printf("[5] Sair\n");
+    printf("=========================\n");
+}
+
+void operacao(int a){ // Realiza a operação escolhida pelo usuário
+
+    float N1, N2, resultado;
+
+    switch (a){
+        case 1: // Adicao
+            printf("Digite o primeiro numero: ");
+            scanf("%f", &N1);
+            printf("Digite o segundo numero: ");
+            scanf("%f", &N2);
+            resultado = N1 + N2;
+            printf("Resultado: %.2f + %.2f = %.2f\n", N1, N2, resultado);
+            break;
+
+        case 2: // Subtracao
+            printf("Digite o primeiro numero: ");
+            scanf("%f", &N1);
+            printf("Digite o segundo numero: ");
+            scanf("%f", &N2);
+            resultado = N1 - N2;
+            printf("Resultado: %.2f - %.2f = %.2f\n", N1, N2, resultado);
+            break;
+
+        case 3: // Multiplicacao
+            printf("Digite o primeiro numero: ");
+            scanf("%f", &N1);
+            printf("Digite o segundo numero: ");
+            scanf("%f", &N2);
+            resultado = N1 * N2;
+            printf("Resultado: %.2f x %.2f = %.2f\n", N1, N2, resultado);
+            break;
+
+        case 4: // Divisao
+            printf("Digite o primeiro numero: ");
+            scanf("%f", &N1);
+            printf("Digite o segundo numero: ");
+            scanf("%f", &N2);
+            if (N2 == 0){
+                printf("Erro: Divisao por zero\n");
+            }else {
+                resultado = N1 / N2;
+                printf("Resultado: %.2f / %.2f = %.2f\n", N1, N2, resultado);
+            }
+            break;
+
+        case 5: // Sair
+            printf("Obrigado! Ate a proxima.");
+            break;
+    }
+}
+
+int main(){ // Função principal que controla o fluxo do programa
+    char resp = 'S';
+    int op;
+    
+    menu(); // chama o procedimento menu para o usuário
+
+    do{
+        do {
+            // Solicita ao usuário que escolha uma opção e valida a entrada
+            printf("Escolha uma opcao: ");
+            scanf("%d", &op);
+
+            // Verifica se a opção é válida (entre 1 e 5)
+            while (op < 1 || op > 5){
+                printf("Opcao invalida. Tente novamente: ");
+                scanf("%d", &op);
+            }
+
+            operacao(op); // chama o procedimento operacao para realizar a operação escolhida pelo usuário
+
+            // Pergunta ao usuário se deseja realizar outra operação, mas apenas se a opção escolhida for entre 1 e 4
+            if(op >= 1 && op <= 4){
+                printf("Deseja realizar outra operacao? (S/N): ");
+                scanf(" %c", &resp);
+                
+                // Valida a resposta do usuário, considerando apenas 'S', 's', 'N' ou 'n'. Caso contrário, considera como 'N'.
+                if (resp != 'S' && resp != 's' && resp != 'N' && resp != 'n'){
+                    printf("Resposta invalida. Apenas 'S' ou 'N' sao aceitas. maiusculas ou minusculas.\n");
+                    printf("Deseja realizar outra operacao? (S/N): ");
+                    scanf(" %c", &resp);
+                }
+
+            }else if(op == 5){
+                resp = 'N';
+            }
+
+        } while (resp == 'S' || resp == 's'); // Continua o loop enquanto o usuário desejar realizar outra operação
+
+    } while (op != 5);
+}
