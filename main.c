@@ -95,6 +95,7 @@ int main(){ // Função principal que controla o fluxo do programa
 
             // Verifica se a opção é um número
             if(resultado_scanf != 1){
+                system("cls");
                 menu();
                 printf("Opcao invalida. Tente novamente\n");
                 while (getchar() != '\n');
@@ -128,11 +129,13 @@ int main(){ // Função principal que controla o fluxo do programa
 
             // Opção de saída do programa
             if(resp == 'N' || resp == 'n'){
+                system("cls");
                 printf("Obrigado por usar a calculadora! Ate a proxima.");
             }
 
         }else if(op == 5){
             resp = 'N';
+            system("cls");
             printf("Obrigado por usar a calculadora! Ate a proxima.");
             
         }
