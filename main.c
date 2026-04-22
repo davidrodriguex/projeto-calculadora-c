@@ -74,6 +74,7 @@ int main(){ // Função principal que controla o fluxo do programa
     // Variáveis utilizadas
     char resp = 'S';
     int op;
+    int resultado_scanf;
 
     while(resp == 'S' || resp == 's'){
 
@@ -82,13 +83,24 @@ int main(){ // Função principal que controla o fluxo do programa
         menu(); // chama o procedimento menu para o usuário
 
         // Solicita ao usuário que escolha uma opção e valida a entrada
-        printf("Opção: ");
-        scanf("%d", &op);
+        while(1){
 
-        // Verifica se a opção é válida (entre 1 e 5)
-        while (op < 1 || op > 5){
-            printf("Opção inválida. Tente novamente: ");
-            scanf("%d", &op);
+            printf("Opção: ");
+            resultado_scanf = scanf("%d", &op);
+
+            // Verifica se a opção é um número
+            if(resultado_scanf != 1){
+                printf("Opção inválida. Tente novamente\n");
+                while (getchar() != '\n');
+                continue;
+            }
+
+            // Verifica se a opção é válida (entre 1 e 5)
+            if(op < 1 || op > 5){
+                printf("Opção inválida. Tente novamente\n");
+                continue;
+            }
+            break;
         }
 
         // Pergunta ao usuário se deseja realizar outra operação, mas apenas se a opção escolhida for entre 1 e 4
