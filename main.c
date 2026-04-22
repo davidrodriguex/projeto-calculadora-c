@@ -15,56 +15,62 @@ void menu(){ // Exibe o menu de opções para o usuário
     printf("[ 5 ] Sair\n");
 }
 
+void receber_valores(float *N1, float *N2){ // Procedimento para receber os valores do usuário
+    
+    printf("Digite o primeiro numero: ");
+    scanf("%f", N1);
+    printf("Digite o segundo numero: ");
+    scanf("%f", N2);
+}
+
 void operacao(int a){ // Realiza a operação escolhida pelo usuário
 
     float N1, N2, resultado;
 
+    
     switch (a){
+        
 
         case 1: // Adicao
-
-            printf("Digite o primeiro numero: ");
-            scanf("%f", &N1);
-            printf("Digite o segundo numero: ");
-            scanf("%f", &N2);
+            
+            system("cls"); // Limpa a tela para melhor visualização do resultado
+            printf("------- Adicao -------\n");
+            receber_valores(&N1, &N2);
             resultado = N1 + N2;
             printf("Resultado: %.2f + %.2f = %.2f\n", N1, N2, resultado);
             break;
 
         case 2: // Subtracao
-
-            printf("Digite o primeiro numero: ");
-            scanf("%f", &N1);
-            printf("Digite o segundo numero: ");
-            scanf("%f", &N2);
+            
+            system("cls");
+            printf("------- Subtracao -------\n");
+            receber_valores(&N1, &N2);
             resultado = N1 - N2;
             printf("Resultado: %.2f - %.2f = %.2f\n", N1, N2, resultado);
             break;
 
         case 3: // Multiplicacao
-
-            printf("Digite o primeiro numero: ");
-            scanf("%f", &N1);
-            printf("Digite o segundo numero: ");
-            scanf("%f", &N2);
+            
+            system("cls");
+            printf("------- Multiplicacao -------\n");
+            receber_valores(&N1, &N2);
             resultado = N1 * N2;
             printf("Resultado: %.2f * %.2f = %.2f\n", N1, N2, resultado);
             break;
-
+                
         case 4: // Divisao
+            
+            system("cls");
+            printf("------- Divisao -------\n");
+            receber_valores(&N1, &N2);
 
-            printf("Digite o primeiro numero: ");
-            scanf("%f", &N1);
-            printf("Digite o segundo numero: ");
-            scanf("%f", &N2);
-
-            if(N2 == 0){
+            while(N2 == 0.00000){
                 printf("Erro: Divisao por zero nao e permitida.\n");
-                break;
-            }else{
-                resultado = N1 / N2;
-                printf("Resultado: %.2f / %.2f = %.2f\n", N1, N2, resultado);
+                printf("Digite o segundo numero novamente: ");
+                scanf("%f", &N2);
             }
+            resultado = N1 / N2;
+            printf("Resultado: %.2f / %.2f = %.2f\n", N1, N2, resultado);
             break;
     }
 }
@@ -89,6 +95,7 @@ int main(){ // Função principal que controla o fluxo do programa
 
             // Verifica se a opção é um número
             if(resultado_scanf != 1){
+                menu();
                 printf("Opcao invalida. Tente novamente\n");
                 while (getchar() != '\n');
                 continue;
@@ -125,7 +132,6 @@ int main(){ // Função principal que controla o fluxo do programa
             }
 
         }else if(op == 5){
-
             resp = 'N';
             printf("Obrigado por usar a calculadora! Ate a proxima.");
             
