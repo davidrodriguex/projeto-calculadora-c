@@ -131,5 +131,4 @@ int main(){ // Função principal que controla o fluxo do programa
         }
 
     } // Continua o loop enquanto o usuário desejar realizar outra operação
-
 }
