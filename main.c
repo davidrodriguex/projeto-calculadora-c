@@ -101,8 +101,8 @@ int main(){ // Função principal que controla o fluxo do programa
                 
             // Valida a resposta do usuário, considerando apenas 'S', 's', 'N' ou 'n'. Caso contrário, considera como 'N'.
             while(resp != 'S' && resp != 's' && resp != 'N' && resp != 'n'){
-                printf("Respota inválida. Por favor, digite 's' para sim ou 'n' para não.\n");
-                printf("Deseja realizar outra operação? (s/n): ");
+                printf("Resposta inválida. Por favor, digite 's' para sim ou 'n' para não.\n");
+                printf("Deseja realizar outra operação? (y/n): ");
                 scanf(" %c", &resp);
             }
 
