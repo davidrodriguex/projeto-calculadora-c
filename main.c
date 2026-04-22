@@ -48,7 +48,7 @@ void operacao(int a){ // Realiza a operação escolhida pelo usuário
             printf("Digite o segundo número: ");
             scanf("%f", &N2);
             resultado = N1 * N2;
-            printf("Resultado: %.2f x %.2f = %.2f\n", N1, N2, resultado);
+            printf("Resultado: %.2f * %.2f = %.2f\n", N1, N2, resultado);
             break;
 
         case 4: // Divisao
@@ -112,8 +112,8 @@ int main(){ // Função principal que controla o fluxo do programa
             scanf(" %c", &resp);
                 
             // Valida a resposta do usuário, considerando apenas 'S', 's', 'N' ou 'n'. Caso contrário, considera como 'N'.
-            while(resp != 'S' && resp != 's' && resp != 'N' && resp != 'n'){
-                printf("Resposta inválida. Por favor, digite 's' para sim ou 'n' para não.\n");
+            while(resp != 'Y' && resp != 'y' && resp != 'N' && resp != 'n'){
+                printf("Resposta inválida. Por favor, digite 'y' para sim ou 'n' para não.\n");
                 printf("Deseja realizar outra operação? (y/n): ");
                 scanf(" %c", &resp);
             }
