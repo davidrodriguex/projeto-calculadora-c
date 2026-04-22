@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void menu(){ // Exibe o menu de opções para o usuário
 
@@ -6,13 +7,12 @@ void menu(){ // Exibe o menu de opções para o usuário
     printf("=========================\n");
     printf("   CALCULADORA SIMPLES   \n");
     printf("=========================\n");
-    printf("[1] Adicao\n");
-    printf("[2] Subtracao\n");
-    printf("[3] Multiplicacao\n");
-    printf("[4] Divisao\n");
-    printf("[5] Sair\n");
-    printf("=========================\n");
-
+    printf("Selecione uma operacao:\n");
+    printf("1. Adicao\n");
+    printf("2. Subtracao\n");
+    printf("3. Multiplicacao\n");
+    printf("4. Divisao\n");
+    printf("5. Sair\n");
 }
 
 void operacao(int a){ // Realiza a operação escolhida pelo usuário
@@ -58,17 +58,13 @@ void operacao(int a){ // Realiza a operação escolhida pelo usuário
             printf("Digite o segundo numero: ");
             scanf("%f", &N2);
 
-            if (N2 == 0){
-                printf("Erro: Divisao por zero\n");
-            }else {
+            if(N2 == 0){
+                printf("Erro: Divisao por zero nao e permitida.\n");
+                break;
+            }else{
                 resultado = N1 / N2;
                 printf("Resultado: %.2f / %.2f = %.2f\n", N1, N2, resultado);
             }
-            break;
-
-        case 5: // Primeira opção de saída do programa
-        
-            printf("Obrigado! Ate a proxima.");
             break;
     }
 }
@@ -78,12 +74,15 @@ int main(){ // Função principal que controla o fluxo do programa
     // Variáveis utilizadas
     char resp = 'S';
     int op;
-    
-    menu(); // chama o procedimento menu para o usuário
 
-    do {
+    while(resp == 'S' || resp == 's'){
+
+        system("cls");
+
+        menu(); // chama o procedimento menu para o usuário
+
         // Solicita ao usuário que escolha uma opção e valida a entrada
-        printf("Escolha uma opcao: ");
+        printf("Opcao: ");
         scanf("%d", &op);
 
         // Verifica se a opção é válida (entre 1 e 5)
@@ -97,25 +96,26 @@ int main(){ // Função principal que controla o fluxo do programa
         // Pergunta ao usuário se deseja realizar outra operação, mas apenas se a opção escolhida for entre 1 e 4
         if(op >= 1 && op <= 4){
 
-            printf("Deseja realizar outra operacao? (S/N): ");
+            printf("Deseja realizar outra operacao? (s/n): ");
             scanf(" %c", &resp);
                 
             // Valida a resposta do usuário, considerando apenas 'S', 's', 'N' ou 'n'. Caso contrário, considera como 'N'.
-            if (resp != 'S' && resp != 's' && resp != 'N' && resp != 'n'){
-                printf("Resposta invalida. Apenas 'S' ou 'N' sao aceitas. maiusculas ou minusculas.\n");
-                printf("Deseja realizar outra operacao? (S/N): ");
+            while(resp != 'S' && resp != 's' && resp != 'N' && resp != 'n'){
+                printf("Respota invalida. Por favor, digite 's' para sim ou 'n' para nao.\n");
+                printf("Deseja realizar outra operacao? (s/n): ");
                 scanf(" %c", &resp);
             }
 
-            // Segunda opção de saída do programa
+            // Opção de saída do programa
             if(resp == 'N' || resp == 'n'){
-                printf("Obrigado! Ate a proxima.");
+                printf("Obrigado por usar a calculadora! Ate a proxima.");
             }
 
-        } else if(op == 5){
+        }else if(op == 5){
             resp = 'N';
+            printf("Obrigado por usar a calculadora! Ate a proxima.");
         }
 
-    } while (resp == 'S' || resp == 's'); // Continua o loop enquanto o usuário desejar realizar outra operação
+    } // Continua o loop enquanto o usuário desejar realizar outra operação
 
 }
